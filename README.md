@@ -247,27 +247,6 @@ Set the following environment variables for production:
 - `AWS_ACCESS_KEY_ID=your_aws_access_key`
 - `AWS_SECRET_ACCESS_KEY=your_aws_secret_key`
 
-### Docker Deployment
-```bash
-# Build Docker image
-docker build -t chatapp-backend .
-
-# Run container
-docker run -p 8080:8080 chatapp-backend
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 👨‍💻 Author
 
 **Radwan**
@@ -279,14 +258,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - MongoDB and MySQL for database support
 - AWS for cloud services
 - All contributors and testers
-
-## 📞 Support
-
-If you have any questions or need help, please:
-1. Check the [Issues](https://github.com/Radwano01/chatapp_backend/issues) page
-2. Create a new issue with detailed description
-3. Contact the maintainer
-
----
 
 **Note**: This is a backend application. You'll need a frontend client to interact with the chat features. The WebSocket endpoints are designed to work with modern web frameworks like React, Vue.js, or Angular.
