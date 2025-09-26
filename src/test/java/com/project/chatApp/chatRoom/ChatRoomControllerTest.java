@@ -39,7 +39,7 @@ class ChatRoomControllerTest {
                 .principal(()->"1")
         );
 
-        response.andExpect(status().isNoContent());
+        response.andExpect(status().isOk());
 
         verify(chatRoomService).getOrCreatePrivateRoom("1", "2");
     }

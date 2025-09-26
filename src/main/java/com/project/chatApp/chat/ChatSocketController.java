@@ -1,6 +1,5 @@
 package com.project.chatApp.chat;
 
-
 import com.project.chatApp.chat.dto.*;
 import com.project.chatApp.chatRoom.ChatRoomService;
 import lombok.RequiredArgsConstructor;
@@ -16,9 +15,7 @@ import java.security.Principal;
 public class ChatSocketController {
 
     private final SimpMessagingTemplate simpMessagingTemplate;
-
     private final ChatMessageService chatMessageService;
-
     private final ChatRoomService chatRoomService;
 
     @MessageMapping("/chat.sendMessage")

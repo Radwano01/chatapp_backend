@@ -22,8 +22,7 @@ public class ChatMessageServiceImpl implements ChatMessageService{
     public ChatMessage privateSave(CreateDTO createDTO, String senderId) {
         var recipientId = chatRoomService.getRecipientId(createDTO.getChatId(), senderId);
 
-        var chatId = chatRoomService.getOrCreatePrivateRoom(senderId, recipientId)
-                .getChatId();
+        var chatId = chatRoomService.getOrCreatePrivateRoom(senderId, recipientId);
 
         var chatMessage = ChatMessage.builder()
                 .chatId(chatId)

@@ -76,14 +76,9 @@ class ChatRoomServiceImplTest {
         when(userRepository.findAllById(List.of("1", "2"))).thenReturn(List.of(user, user2));
         when(chatRoomRepository.findChatRoomByChatId("1_2")).thenReturn(Optional.of(chatRoom));
 
-        var savedChatRoom = chatRoomService.getOrCreatePrivateRoom("1", "2");
+        var chatId = chatRoomService.getOrCreatePrivateRoom("1", "2");
 
-        assertAll(
-                ()-> assertEquals(chatRoom.getChatId(), savedChatRoom.getChatId()),
-                ()-> assertEquals(chatRoom.getId(), savedChatRoom.getId()),
-                ()-> assertEquals(chatRoom.getMembers(), savedChatRoom.getMembers()),
-                ()-> assertEquals(now, savedChatRoom.getCreatedAt())
-        );
+        assertEquals("1_2", chatId);
     }
 
     @Test
@@ -100,14 +95,9 @@ class ChatRoomServiceImplTest {
         when(chatRoomRepository.findChatRoomByChatId("1_2")).thenReturn(Optional.empty());
         when(chatRoomRepository.save(Mockito.any(ChatRoom.class))).thenReturn(newRoom);
 
-        var savedChatRoom = chatRoomService.getOrCreatePrivateRoom("1", "2");
+        var chatId = chatRoomService.getOrCreatePrivateRoom("1", "2");
 
-        assertAll(
-                ()-> assertEquals(chatRoom.getChatId(), savedChatRoom.getChatId()),
-                ()-> assertEquals(chatRoom.getId(), savedChatRoom.getId()),
-                ()-> assertEquals(chatRoom.getMembers(), savedChatRoom.getMembers()),
-                ()-> assertEquals(now, savedChatRoom.getCreatedAt())
-        );
+        assertEquals("1_2", chatId);
 
         verify(chatRoomRepository, times(1)).save(Mockito.any(ChatRoom.class));
     }

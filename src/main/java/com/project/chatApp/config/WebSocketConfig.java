@@ -1,8 +1,8 @@
 package com.project.chatApp.config;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.converter.DefaultContentTypeResolver;
 import org.springframework.messaging.converter.MappingJackson2MessageConverter;
@@ -21,16 +21,17 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Autowired
     private JwtHandshakeInterceptor jwtHandshakeInterceptor;
+    
+    @Value("${domain}")
+    private String domain;
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws")
                 .addInterceptors(jwtHandshakeInterceptor)
                 .setHandshakeHandler(new UserHandshakeHandler())
-                .setAllowedOriginPatterns("http://localhost:3000")
-                .withSockJS();
+                .setAllowedOrigins(domain, "https://*.ngrok-free.dev");
     }
-
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {

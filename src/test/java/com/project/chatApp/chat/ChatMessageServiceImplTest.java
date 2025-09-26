@@ -44,7 +44,7 @@ class ChatMessageServiceImplTest {
                 .build();
 
         when(chatRoomService.getRecipientId("1_2", "1")).thenReturn("2");
-        when(chatRoomService.getOrCreatePrivateRoom("1", "2")).thenReturn(chatRoom);
+        when(chatRoomService.getOrCreatePrivateRoom("1", "2")).thenReturn("1_2");
 
         var savedPrivateMessage = chatMessageService.privateSave(message, "1");
 

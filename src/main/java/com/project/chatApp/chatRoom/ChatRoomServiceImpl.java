@@ -19,7 +19,7 @@ public class ChatRoomServiceImpl implements ChatRoomService {
     private final UserRepository userRepository;
 
     @Override
-    public ChatRoom getOrCreatePrivateRoom(String senderId, String recipientId) {
+    public String getOrCreatePrivateRoom(String senderId, String recipientId) {
         String chatId = buildPrivateChatId(senderId, recipientId);
 
         List<User> users = userRepository.findAllById(List.of(senderId, recipientId));
@@ -28,7 +28,7 @@ public class ChatRoomServiceImpl implements ChatRoomService {
             throw new ResourceNotFoundException("One or both users not found");
         }
 
-        return chatRoomRepository.findChatRoomByChatId(chatId)
+        ChatRoom savedRoom = chatRoomRepository.findChatRoomByChatId(chatId)
                 .orElseGet(() -> {
                     Date now = new Date();
                     ChatRoom room = ChatRoom.builder()
@@ -36,8 +36,11 @@ public class ChatRoomServiceImpl implements ChatRoomService {
                             .members(users)
                             .createdAt(now)
                             .build();
-                    return chatRoomRepository.save(room);
+                    chatRoomRepository.save(room);
+                    return room;
                 });
+
+        return savedRoom.getChatId();
     }
 
     @Override

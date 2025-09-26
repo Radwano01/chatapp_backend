@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ChatRoomService {
 
-    ChatRoom getOrCreatePrivateRoom(String senderId, String recipientId);
+    String getOrCreatePrivateRoom(String senderId, String recipientId);
 
     List<GetChatRoomDTO> getUserChatRooms(String userId);
 
