@@ -1,5 +1,6 @@
 package com.project.chatApp.chat.dto;
 
+import com.project.chatApp.chat.MessageType;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,6 +14,7 @@ public class ChatNotification {
     private String media;
     private String content;
     private String avatar;
+    private MessageType type;
 
     private String senderName;
     private String senderAvatar;

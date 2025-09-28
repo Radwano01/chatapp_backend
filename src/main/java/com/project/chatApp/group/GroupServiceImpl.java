@@ -5,7 +5,6 @@ import com.project.chatApp.exception.ResourceAlreadyExistsException;
 import com.project.chatApp.exception.ResourceDoesNotHaveAccessException;
 import com.project.chatApp.exception.ResourceNotFoundException;
 import com.project.chatApp.group.dto.*;
-import com.project.chatApp.user.User;
 import com.project.chatApp.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

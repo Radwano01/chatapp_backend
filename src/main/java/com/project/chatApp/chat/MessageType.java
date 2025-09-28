@@ -2,7 +2,7 @@ package com.project.chatApp.chat;
 
 public enum MessageType {
     TEXT,
-    VOICE,
+    AUDIO,
     IMAGE,
     VIDEO,
     FILE

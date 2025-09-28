@@ -102,6 +102,7 @@ public class ChatSocketController {
                 .content(msg.getContent())
                 .media(msg.getMedia())
                 .avatar(msg.getMedia())
+                .type(msg.getType())
                 .senderName(msg.getSenderName())
                 .senderAvatar(msg.getSenderAvatar())
                 .build();

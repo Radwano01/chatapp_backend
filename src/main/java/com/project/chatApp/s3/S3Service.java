@@ -29,7 +29,7 @@ public class S3Service {
             String prefix = switch (type) {
                 case IMAGE -> "images/";
                 case VIDEO -> "videos/";
-                case VOICE -> "audio/";
+                case AUDIO -> "audio/";
                 default -> "files/";
             };
 
